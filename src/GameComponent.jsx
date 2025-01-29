@@ -46,6 +46,8 @@ function GameComponent() {
     isGameOver,
     player1.score,
     player2.score,
+    player1.name,
+    player2.name,
     roundNumbers,
     currentRound,
     roundWinner,
