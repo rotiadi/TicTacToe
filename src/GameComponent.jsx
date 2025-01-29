@@ -123,7 +123,7 @@ function GameComponent() {
         setPlayer2((prevProp) => ({ ...prevProp, score: player2.score + 1 }));
       }
 
-      if (roundNumbers == currentRound) {
+      if (roundNumbers === currentRound) {
         setGameWinner(
           player1.score > player2.score
             ? player1.name
