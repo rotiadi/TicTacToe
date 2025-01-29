@@ -1,0 +1,197 @@
+.App {
+  text-align: center;
+ 
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.square {
+  background: #fff;
+  border: 2px solid #999;
+  float: left;
+  font-size: 8rem;
+  font-weight: bold;
+  line-height: 34px;
+  height: 8rem;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 8rem;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+
+
+
+
+.header {
+  width: 100vw;
+  text-align: center;
+  font-size: 4rem;
+  color: darkblue;
+}
+
+.mainContainer {
+  display: flex;
+  
+}
+
+
+
+.gameContainer {
+  margin-left: 10%;
+}
+
+
+.buttonRestart {
+  display: none;
+  padding: 5%;
+  margin-top: 5%;
+  width: 100%;
+  font-size: 2rem;
+}
+
+@keyframes blink {
+  0% {
+      opacity: 1;
+  }
+
+  50% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+.winner, .gamewinner{
+  
+  text-align: center;
+  margin-top: 2%;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(19, 2, 252, 0.849);
+  animation: blink 1s infinite;
+}
+
+h6 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h6 span {
+  color: blue;
+}
+
+.configGame {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newgamebutton{  
+  margin-bottom: 10px;
+  height: 3rem;
+  font-size: 2rem;
+  background-color: lightblue;
+}
+
+.playersRegister {
+  align-self: flex-start;
+}
+
+.PlayerCard {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  width: 200px; /* Adjust as needed */
+  text-align: center;
+}
+
+.playerCardsContainer {
+  display: flex;
+  gap: 20px; /* Adds spacing between cards */
+  justify-content: center; /* Centers them horizontally */
+  margin-top: 20px;
+}
+
+.playerHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds spacing between title and button */
+}
+
+.editNameButton {
+  font-size: 12px; /* Makes the button smaller */
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.roundSelectorContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  
+}
+
+.RoundSelector{
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+body {
+  background-image: url('../public/background.jpg'); /* Path to your image */
+  background-size: cover; /* Ensures it covers the full screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repeating */
+  height: 100vh; /* Full height */
+  margin: 0;
+  padding: 0;
+}
