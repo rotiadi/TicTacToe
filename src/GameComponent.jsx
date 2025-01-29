@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Player from "./Player";
 import Board from "./Board";
 
@@ -9,6 +9,8 @@ function GameComponent() {
   const [isNewRound, setIsNewRound] = useState(false);
   const [endRound, setEndRound] = useState(false);
   const [gameWinner, setGameWinner] = useState();
+  const [roundWinner, setRoundWinner] = useState();
+  const [isGameOver, setIsGameOver] = useState(false);
 
   const [winnerSolution, setWinnerSolution] = useState([]);
 
@@ -27,6 +29,27 @@ function GameComponent() {
 
   const [currentPlayer, setCurrentPlayer] = useState(player1);
   const [squares, setSquares] = useState(Array(9).fill(null));
+
+  useEffect(() => {
+    if (isGameOver && roundNumbers === currentRound) {
+      setGameWinner(
+        player1.score > player2.score
+          ? player1.name
+          : player1.score === player2.score
+          ? "DRAW"
+          : player2.name
+      );
+      setIsNewGame(true);
+      setIsGameOver(false);
+    }
+  }, [
+    isGameOver,
+    player1.score,
+    player2.score,
+    roundNumbers,
+    currentRound,
+    roundWinner,
+  ]);
 
   const onSubmitName = (name, playerNumber) => {
     if (name) {
@@ -76,6 +99,7 @@ function GameComponent() {
     setIsNewGame(true);
     setIsNewRound(false);
     setGameWinner();
+    setIsGameOver(false);
   };
 
   const startGame = () => {
@@ -88,6 +112,7 @@ function GameComponent() {
     setWinnerSolution([]);
     setCurrentRound(1);
     setGameWinner();
+    setIsGameOver(false);
   };
 
   const newRound = () => {
@@ -116,23 +141,15 @@ function GameComponent() {
 
       setWinnerSolution(winner.winnerSolution);
 
+      setRoundWinner(winner.winner);
+
       if (player1.symbol === winner.winner) {
         setPlayer1((prevProp) => ({ ...prevProp, score: player1.score + 1 }));
       }
       if (player2.symbol === winner.winner) {
         setPlayer2((prevProp) => ({ ...prevProp, score: player2.score + 1 }));
       }
-
-      if (roundNumbers === currentRound) {
-        setGameWinner(
-          player1.score > player2.score
-            ? player1.name
-            : player1.score === player2.score
-            ? "DRAW"
-            : player2.name
-        );
-        setIsNewGame(true);
-      }
+      if (currentRound === roundNumbers) setIsGameOver(true);
     }
   };
 
@@ -217,7 +234,7 @@ function GameComponent() {
             className="RoundSelector"
             style={{ display: isNewGame ? "block" : "none" }}
             name="RoundSelector"
-            onChange={(e) => setRoundNumbers(e.target.value)}
+            onChange={(e) => setRoundNumbers(Number(e.target.value))}
           >
             <option value="1">1</option>
             <option value="3">3</option>
@@ -263,7 +280,7 @@ function GameComponent() {
             className="winner"
             style={{ display: endRound ? "block" : "none" }}
           >
-            Player {currentPlayer.name} wins this round!
+            Player {roundWinner} wins this round!
           </div>
           <button
             className="buttonRestart"
