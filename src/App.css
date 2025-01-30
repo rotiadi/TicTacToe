@@ -1,49 +1,9 @@
-.App {
-  text-align: center;
- 
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 * {
   color: lightseagreen;
   font-weight: bold;
   font-size: medium;
+  text-align: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 .square {
   background: #fff;
@@ -66,10 +26,6 @@
   display: table;
 }
 
-
-
-
-
 .header {
   width: 100vw;
   text-align: center;
@@ -82,10 +38,8 @@
   
 }
 
-
-
 .gameContainer {
-  margin-left: 10%;
+  
 }
 
 
@@ -93,8 +47,9 @@
   display: none;
   padding: 5%;
   margin-top: 5%;
-  width: 100%;
+  width: 70%;
   font-size: 2rem;
+  margin: 0;
 }
 
 @keyframes blink {
@@ -119,6 +74,7 @@
   font-weight: 700;
   color: rgba(19, 2, 252, 0.849);
   animation: blink 1s infinite;
+  margin: 0;
 }
 
 h6 {
@@ -131,6 +87,8 @@ h6 {
 h6 span {
   color: blue;
 }
+
+p {margin: 0;}
 
 .configGame {
   margin-top: 10px;
@@ -170,7 +128,8 @@ h6 span {
 .playerHeader {
   display: flex;
   align-items: center;
-  gap: 10px; /* Adds spacing between title and button */
+  justify-content: center;
+  gap: 10px; 
 }
 
 .editNameButton {
@@ -192,12 +151,82 @@ h6 span {
   font-size: 1.5rem;
 }
 
+.boardContainer {
+  justify-items: center;
+}
+
 body {
   background-image: url('../public/background.jpg'); /* Path to your image */
-  background-size: cover; /* Ensures it covers the full screen */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating */
   height: 100vh; /* Full height */
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .header{margin: 0;}
+
+  h3 {
+    margin: 0;
+  }
+  h2 {
+    margin: 0;
+  }
+
+  h6 {
+    
+    margin: 0;
+  }
+  
+  .mainContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .configGame {
+    width: 100%;
+  }
+
+  .playerCardsContainer {
+    margin-top: 0;
+    gap: 10px;
+  }
+
+  .PlayerCard {
+    width: 30%;
+    padding: 0 15px;
+    
+  }
+
+  .roundSelectorContainer{
+    margin: 0.5em;
+  }
+
+  .RoundSelector {
+    margin: 0.5rem 0
+  }
+
+
+  .square {
+    background: #fff;
+    border: 2px solid #999;
+    float: left;
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 34px;
+    height: 5rem;
+    width: 5rem;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    
+  }
+  
+  .board-row:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
 }

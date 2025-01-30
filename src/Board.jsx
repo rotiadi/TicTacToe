@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-function Board({ handleCellClick, squares, isNewRound, winnerSolution }) {
+function Board({ handleCellClick, squares, isNewGame, winnerSolution }) {
   const generateBoard = (x, y) => {
     const board = [];
     for (let i = 0; i < y; i++) {
@@ -29,7 +29,7 @@ function Board({ handleCellClick, squares, isNewRound, winnerSolution }) {
 
   return (
     <>
-      <div className="board" style={{ display: isNewRound ? "block" : "none" }}>
+      <div className="board" style={{ display: isNewGame ? "block" : "none" }}>
         {generateBoard(3, 3)}
       </div>
     </>

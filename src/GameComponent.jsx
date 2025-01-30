@@ -123,6 +123,7 @@ function GameComponent() {
     setCurrentPlayer(player1);
     setCurrentRound(currentRound + 1);
     setWinnerSolution([]);
+    setIsNewRound(true);
   };
 
   const handleCellClick = (squareIndex) => {
@@ -144,6 +145,7 @@ function GameComponent() {
       setWinnerSolution(winner.winnerSolution);
 
       setRoundWinner(winner.winner);
+      setIsNewRound(false);
 
       if (player1.symbol === winner.winner) {
         setPlayer1((prevProp) => ({ ...prevProp, score: player1.score + 1 }));
@@ -180,21 +182,21 @@ function GameComponent() {
               backgroundColor: gameWinner === player1.name ? "green" : "white",
             }}
           >
+            <h3>Player 1</h3>
             <div className="playerHeader">
-              <h3>Player 1</h3>
-              <button
-                style={{
-                  display: player1.name ? "block" : "none",
-                  backgroundColor:
-                    gameWinner === player1.name ? "green" : "white",
-                }}
-                onClick={() => editPlayerName(player1)}
-                className="editNameButton"
-              >
-                Edit Name
-              </button>
+              <h2>{player1.name}</h2>
             </div>
-            <h2>{player1.name}</h2>
+            <button
+              style={{
+                display: player1.name ? "inline-block" : "none",
+                backgroundColor:
+                  gameWinner === player1.name ? "green" : "white",
+              }}
+              onClick={() => editPlayerName(player1)}
+              className="editNameButton"
+            >
+              Edit
+            </button>
             <p>Symbol: {player1.symbol}</p>
             <p>
               Score: <span>{player1.score}</span>
@@ -206,22 +208,21 @@ function GameComponent() {
               backgroundColor: gameWinner === player2.name ? "green" : "white",
             }}
           >
+            <h3>Player 2</h3>
             <div className="playerHeader">
-              <h3>Player 2</h3>
-
-              <button
-                style={{
-                  display: player2.name ? "block" : "none",
-                  backgroundColor:
-                    gameWinner === player2.name ? "green" : "white",
-                }}
-                onClick={() => editPlayerName(player2)}
-                className="editNameButton"
-              >
-                Edit Name
-              </button>
+              <h2>{player2.name}</h2>
             </div>
-            <h2>{player2.name}</h2>
+            <button
+              style={{
+                display: player2.name ? "inline-block" : "none",
+                backgroundColor:
+                  gameWinner === player2.name ? "green" : "white",
+              }}
+              onClick={() => editPlayerName(player2)}
+              className="editNameButton"
+            >
+              Edit
+            </button>
             <p>Symbol: {player2.symbol}</p>
             <p>
               Score: <span>{player2.score}</span>
@@ -275,7 +276,7 @@ function GameComponent() {
           <Board
             handleCellClick={handleCellClick}
             squares={squares}
-            isNewRound={isNewRound}
+            isNewGame={!isNewGame}
             winnerSolution={winnerSolution}
           />
           <div
